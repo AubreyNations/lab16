@@ -8,10 +8,10 @@
 # from the key press event... maybe a loop to keep checking until the rocket goes out of bounds?
 from Tkinter import *
 root = Tk()
-drawpad = Canvas(root, width=800,height=600, background='white')
+drawpad = Canvas(root, width=800,height=600, background='#BFF5ED')
 rocket1 = drawpad.create_rectangle(400,585,405,590)
-player = drawpad.create_oval(390,580,410,600, fill="blue")
-enemy = drawpad.create_rectangle(50,50,100,60, fill="red")
+player = drawpad.create_oval(390,580,410,600, fill="#35B0FC", outline="#35B0FC")
+enemy = drawpad.create_rectangle(50,50,100,60, fill="red", outline="red")
 rocket1Fired = False
 
 direction = 5
@@ -63,18 +63,23 @@ class myApp(object):
     def key(self, event):
         global player
         global drawpad
+        x1,y1,x2,y2 = drawpad.coords(player)
         if event.char == "w":
-            drawpad.move(player,0,-20)
-            drawpad.move(rocket1,0,-20)
+            if y1>0:
+                drawpad.move(player,0,-20)
+                drawpad.move(rocket1,0,-20)
         elif event.char == "d":
-            drawpad.move(player,20,0)
-            drawpad.move(rocket1,20,0)
+            if x2<800:
+                drawpad.move(player,20,0)
+                drawpad.move(rocket1,20,0)
         elif event.char == "a":
-            drawpad.move(player,-20,0)
-            drawpad.move(rocket1,-20,0)
+            if x1>0:
+                drawpad.move(player,-20,0)
+                drawpad.move(rocket1,-20,0)
         elif event.char == "s":
-            drawpad.move(player,0,20)
-            drawpad.move(rocket1,0,20)
+            if y2<600:
+                drawpad.move(player,0,20)
+                drawpad.move(rocket1,0,20)
             
     
     def collisionDetect(self, rocket):
