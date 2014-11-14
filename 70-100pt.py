@@ -41,6 +41,8 @@ class myApp(object):
         drawpad.pack()
         root.bind_all('<Key>', self.key)
         self.animate()
+        
+    
     
     def animate(self):
         global drawpad
@@ -58,12 +60,21 @@ class myApp(object):
         drawpad.move(enemy, direction, 0)
         drawpad.after(5,self.animate)
 
-    def key(self,event):
+    def key(self, event):
         global player
-        global rocket1Fired
+        global drawpad
         if event.char == "w":
-            drawpad.move(player,0,-4)
-            drawpad.move(rocket1,0,-4)
+            drawpad.move(player,0,-20)
+            drawpad.move(rocket1,0,-20)
+        elif event.char == "d":
+            drawpad.move(player,20,0)
+            drawpad.move(rocket1,20,0)
+        elif event.char == "a":
+            drawpad.move(player,-20,0)
+            drawpad.move(rocket1,-20,0)
+        elif event.char == "s":
+            drawpad.move(player,0,20)
+            drawpad.move(rocket1,0,20)
             
     
     def collisionDetect(self, rocket):
