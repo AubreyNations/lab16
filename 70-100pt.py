@@ -29,12 +29,12 @@ class myApp(object):
         # Enter my text
         self.prompt = "Rockets left :"
         
-        self.label1 = Label(root, text=self.prompt, width=len(self.prompt), bg='green')
+        self.label1 = Label(root, text=self.prompt, width=len(self.prompt), bg='#35B0FC')
         self.label1.pack()
 
         self.rockets = 3
         
-        self.rocketsTxt = Label(root, text=str(self.rockets), width=len(str(self.rockets)), bg='green')
+        self.rocketsTxt = Label(root, text=str(self.rockets), width=len(str(self.rockets)), bg='#35B0FC')
         self.rocketsTxt.pack()
         
         self.rocketFired = False
