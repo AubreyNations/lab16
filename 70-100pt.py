@@ -67,8 +67,9 @@ class myApp(object):
             drawpad.delete(enemy)
         if ry2<0:
             rocket1Fired = False
-        if rocket1Fired == False:
-            drawpad.move(rocket1, (px1-rx1), (py1,ry1))
+            drawpad.move(rocket1, (px1-rx1), (py1-ry1))
+            self.rockets = (self.rockets) - 1
+            self.rocketsTxt.configure(text=self.rockets)
         drawpad.after(10,self.animate)
 
     def key(self, event):
